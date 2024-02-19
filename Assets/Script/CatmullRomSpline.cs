@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HermiteSpline : MonoBehaviour
+public class CatmullRomSpline : MonoBehaviour
 {
     //This script creates a Bezier Spline
     [Header("Point References")] public Transform p0;
 
-    public Transform v0, p1, v1, p2, v2, p3, v3, p4, v4;
-
+    public Transform p1,p2,p3,p4;
     public LineRenderer lineRenderer0, lineRenderer1, lineRenderer2, lineRenderer3;
 
     [Range(1,50)] public int numberOfLineSegments = 30;
@@ -34,36 +33,49 @@ public class HermiteSpline : MonoBehaviour
         Vector3 p2Position = p2.position;
         Vector3 p3Position = p3.position;
         Vector3 p4Position = p4.position;
-        Vector3 v0Velocity = v0.position-p0Position;
-        Vector3 v1Velocity = v1.position-p1Position;
-        Vector3 v2Velocity = v2.position-p2Position;
-        Vector3 v3Velocity = v3.position-p3Position;
-        Vector3 v4Velocity = v4.position-p4Position;
+        Vector3 pVirtualStart = p0Position + (p0Position - p1Position);
+        Vector3 pVirtualEnd = p4Position + (p4Position-p3Position);
         
         //Increment Value for t
         float incrementValue = 1f / numberOfLineSegments;
         float t = 0;
         //Calculate Weights
         //Segment 1
-        Vector3 a0 = 2f * p0Position + v0Velocity - 2f * p1Position + v1Velocity;
-        Vector3 b0 = -3f * p0Position - 2f * v0Velocity + 3f * p1Position - v1Velocity;
-        Vector3 c0 = v0Velocity;
-        Vector3 d0 = p0Position;
+        Vector3 a0 = -1 * pVirtualStart + 3f *  p0Position - 3f * p1Position + 1f * p2Position;
+        Vector3 b0 = 2f * pVirtualStart - 5f * p0Position + 4f * p1Position - p2Position;
+        Vector3 c0 = -pVirtualStart + p1Position;
+        Vector3 d0 = 2f * p0Position;
+        a0 /= 2f;
+        b0 /= 2f;
+        c0 /= 2f;
+        d0 /= 2f;
         //Segment 2
-        Vector3 a1 = 2f *p1Position + v1Velocity - 2f * p2Position + v2Velocity;
-        Vector3 b1 = -3f * p1Position - 2f * v1Velocity + 3f * p2Position - v2Velocity;
-        Vector3 c1 = v1Velocity;
-        Vector3 d1 = p1Position;
+        Vector3 a1 = -1 * p0Position + 3f *  p1Position - 3f * p2Position + 1f * p3Position;
+        Vector3 b1 = 2f * p0Position - 5f * p1Position + 4f * p2Position - p3Position;
+        Vector3 c1 = -p0Position + p2Position;
+        Vector3 d1 = 2f * p1Position;
+        a1 /= 2f;
+        b1 /= 2f;
+        c1 /= 2f;
+        d1 /= 2f;
         //Segment 3
-        Vector3 a2 = 2f * p2Position + v2Velocity - 2f * p3Position + v3Velocity;
-        Vector3 b2 = -3f * p2Position - 2f * v2Velocity + 3f * p3Position - v3Velocity;
-        Vector3 c2 = v2Velocity;
-        Vector3 d2 = p2Position;
+        Vector3 a2 = -1 * p1Position + 3f *  p2Position - 3f * p3Position + 1f * p4Position;
+        Vector3 b2 = 2f * p1Position - 5f * p2Position + 4f * p3Position - p4Position;
+        Vector3 c2 = -p1Position + p3Position;
+        Vector3 d2 = 2f * p2Position;
+        a2 /= 2f;
+        b2 /= 2f;
+        c2 /= 2f;
+        d2 /= 2f;
         //Segment 4
-        Vector3 a3 = 2f * p3Position + v3Velocity - 2f * p4Position + v4Velocity;
-        Vector3 b3 = -3f * p3Position - 2f * v3Velocity + 3f * p4Position - v4Velocity;
-        Vector3 c3 = v3Velocity;
-        Vector3 d3 = p3Position;
+        Vector3 a3 = -1 * p2Position + 3f *  p3Position - 3f * p4Position + 1f * pVirtualEnd;
+        Vector3 b3 = 2f * p2Position - 5f * p3Position + 4f * p4Position - pVirtualEnd;
+        Vector3 c3 = -p2Position + p4Position;
+        Vector3 d3 = 2f * p3Position;
+        a3 /= 2f;
+        b3 /= 2f;
+        c3 /= 2f;
+        d3 /= 2f;
 
         for (int i = 0; i <= numberOfLineSegments; i++)
         {
