@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HermiteSpline : MonoBehaviour
 {
-    //This script creates a Bezier Spline
+    //This script creates a Hermite Spline, using 10 Transforms (5 for position and 5 for velocity vectors) added in the Editor and adds the points to be drawn to 4 LineRenderers
     [Header("Point References")] public Transform p0;
 
     public Transform v0, p1, v1, p2, v2, p3, v3, p4, v4;
@@ -12,7 +12,6 @@ public class HermiteSpline : MonoBehaviour
     public LineRenderer lineRenderer0, lineRenderer1, lineRenderer2, lineRenderer3;
 
     [Range(1,50)] public int numberOfLineSegments = 30;
-    public float tValue = 0f;
 
     private List<Vector3> _segment0Points,_segment1Points, _segment2Points, _segment3Points;
     // Update is called once per frame

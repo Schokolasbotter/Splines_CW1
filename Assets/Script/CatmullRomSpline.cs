@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CatmullRomSpline : MonoBehaviour
 {
-    //This script creates a Bezier Spline
+    //This script creates a Catmull-Rom Spline, using 5 Transforms added in the Editor and adds the points to be drawn to 4 LineRenderers
     [Header("Point References")] public Transform p0;
 
     public Transform p1,p2,p3,p4;
     public LineRenderer lineRenderer0, lineRenderer1, lineRenderer2, lineRenderer3;
 
     [Range(1,50)] public int numberOfLineSegments = 30;
-    public float tValue = 0f;
 
     private List<Vector3> _segment0Points,_segment1Points, _segment2Points, _segment3Points;
     // Update is called once per frame
@@ -34,7 +33,7 @@ public class CatmullRomSpline : MonoBehaviour
         Vector3 p3Position = p3.position;
         Vector3 p4Position = p4.position;
         Vector3 pVirtualStart = p0Position + (p0Position - p1Position);
-        Vector3 pVirtualEnd = p4Position + (p4Position-p3Position);
+        Vector3 pVirtualEnd = p4Position + (p4Position - p3Position);
         
         //Increment Value for t
         float incrementValue = 1f / numberOfLineSegments;
