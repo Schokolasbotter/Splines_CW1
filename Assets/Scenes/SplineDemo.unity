@@ -785,7 +785,7 @@ Transform:
   m_GameObject: {fileID: 185927725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.64, z: 0}
+  m_LocalPosition: {x: 0, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2285,7 +2285,7 @@ Transform:
   m_GameObject: {fileID: 832610071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.64, z: 0}
+  m_LocalPosition: {x: 0, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2422,7 +2422,7 @@ Transform:
   m_GameObject: {fileID: 866289530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.64, z: 0}
+  m_LocalPosition: {x: 0, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6101,7 +6101,6 @@ MonoBehaviour:
   lineRenderer2: {fileID: 902828223}
   lineRenderer3: {fileID: 1830466243}
   numberOfLineSegments: 50
-  tValue: 0
 --- !u!4 &1765515412
 Transform:
   m_ObjectHideFlags: 0
@@ -6186,7 +6185,7 @@ MonoBehaviour:
   lineRenderer1: {fileID: 1320898575}
   lineRenderer2: {fileID: 1462826368}
   lineRenderer3: {fileID: 1151531672}
-  numberOfLineSegments: 30
+  numberOfLineSegments: 50
   tValue: 0
 --- !u!1 &1800896019
 GameObject:
@@ -6640,7 +6639,6 @@ MonoBehaviour:
   lineRenderer2: {fileID: 832610072}
   lineRenderer3: {fileID: 2038118606}
   numberOfLineSegments: 50
-  tValue: 0
 --- !u!4 &1836756647
 Transform:
   m_ObjectHideFlags: 0
@@ -7056,7 +7054,7 @@ Transform:
   m_GameObject: {fileID: 2038118605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.64, z: 0}
+  m_LocalPosition: {x: 0, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7247,7 +7245,6 @@ MonoBehaviour:
   lineRenderer2: {fileID: 1497923866}
   lineRenderer3: {fileID: 1800896020}
   numberOfLineSegments: 50
-  tValue: 0
 --- !u!4 &2098247124
 Transform:
   m_ObjectHideFlags: 0
